@@ -635,6 +635,9 @@ export function createPatchFunction (backend) {
           }
           // either not server-rendered, or hydration failed.
           // create an empty node and replace it
+          if (oldVnode.nodeType !== 1) {
+            return
+          }
           oldVnode = emptyNodeAt(oldVnode)
         }
         // replacing existing element
